@@ -77,7 +77,6 @@ model Like{
 
   @@index([userId, postId])
   @@unique([userId, postId])
-
 }
 
 model Follows{
@@ -100,8 +99,8 @@ model Notification {
   type      NotificationType        
   read      Boolean  @default(false)
   postId    String?                 
-  commentId String?                
-  createdAt DateTime @default(now())
+  commentId String?    
+  createdAt DateTime @default(now())            
   
   // Relations
   user      User     @relation("userNotifications", fields: [userId], references: [id], onDelete: Cascade)
