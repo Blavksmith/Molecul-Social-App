@@ -24,17 +24,17 @@ function CreatePost() {
     try {
       const result = await createPost(content, imageUrl);
 
-      if (result?.success) { // hMMM
-          setContent("");
-          setImageUrl("");
-          setShowImageUpload(false);
+      if (result?.success) {
+        // hMMM
+        setContent("");
+        setImageUrl("");
+        setShowImageUpload(false);
 
-          toast.success("Post created successfully");
+        toast.success("Post created successfully");
       }
     } catch (err) {
-        console.error("Failed to create post: ", err);
-        toast.error("Post failed to create");
-
+      console.error("Failed to create post: ", err);
+      toast.error("Post failed to create");
     }
   };
 
