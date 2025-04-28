@@ -165,3 +165,4 @@ export async function toggleFollow(userId: string) {
     return { success: false, error: "Toggle failed" };
   }
 }
+
