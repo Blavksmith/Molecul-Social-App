@@ -139,7 +139,6 @@ export async function toggleLike(postId: string) {
   }
 }
 
-
 export async function createComment(postId: string, content: string) {
     try {
       const userId = await getDbUserById();
