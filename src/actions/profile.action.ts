@@ -6,59 +6,35 @@ import { revalidatePath } from "next/cache";
 import { getDbUserById } from "./user.actions";
 
 
-export async function getProfileByUsername(username: string){
-    try{
+export async function getProfileByUsername(username: string) {
+    try {
       const user = await prisma.user.findUnique({
-        where: {
-          username: username
-        },
-        select:{
+        where: { username: username },
+        select: {
           id: true,
-          username: true,
           name: true,
+          username: true,
           bio: true,
           image: true,
           location: true,
           website: true,
           createdAt: true,
+          _count: {
+            select: {
+              followers: true,
+              following: true,
+              posts: true,
+            },
+          },
         },
-        
-
-      })
-    }catch(err){
-
-    }
-}
-
-// export async function getProfileByUsername(username: string) {
-//     try {
-//       const user = await prisma.user.findUnique({
-//         where: { username: username },
-//         select: {
-//           id: true,
-//           name: true,
-//           username: true,
-//           bio: true,
-//           image: true,
-//           location: true,
-//           website: true,
-//           createdAt: true,
-//           _count: {
-//             select: {
-//               followers: true,
-//               following: true,
-//               posts: true,
-//             },
-//           },
-//         },
-//       });
+      });
   
-//       return user;
-//     } catch (error) {
-//       console.error("Error fetching profile:", error);
-//       throw new Error("Failed to fetch profile");
-//     }
-//   }
+      return user;
+    } catch (error) {
+      console.error("Error fetching profile:", error);
+      throw new Error("Failed to fetch profile");
+    }
+  }
   
 export async function getUserPosts(userId: string) {
     try {
@@ -214,7 +190,7 @@ export async function getUserPosts(userId: string) {
         },
       });
   
-      return !!follow;
+      return !!follow; // return true if follow found object.
     } catch (error) {
       console.error("Error checking follow status:", error);
       return false;
