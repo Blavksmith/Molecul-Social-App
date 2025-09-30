@@ -1,6 +1,6 @@
 "use client";
 
-import { UploadDropzone } from "@uploadthing/react";
+import { UploadDropzone } from "@/lib/uploadthing";
 import { XIcon } from "lucide-react";
 
 interface ImageUploadProps {
@@ -24,14 +24,14 @@ function ImageUpload({ endpoint, onChange, value }: ImageUploadProps) {
       </div>
     );
   }
-return (
+  return (
     <UploadDropzone
-      endpoint="imageUploader"
+      endpoint={endpoint}
       onClientUploadComplete={(res) => {
-        console.log("Files: ", res);
+        onChange(res?.[0].url);
       }}
-      onUploadError={(error) => {
-        alert(`ERROR! ${error.message}`);
+      onUploadError={(error: Error) => {
+        console.error("Upload error:", error);
       }}
     />
   );
