@@ -4,30 +4,25 @@ import {
   getUserPosts,
   isFollowing,
 } from "@/actions/profile.action";
-import { getDbUserById } from "@/actions/user.actions";
 import { notFound } from "next/navigation";
-import React from "react";
 import ProfilePageClient from "./ProfilePageClient";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { username: string };
-}) {
+export async function generateMetadata({ params }: { params: { username: string } }) {
   const user = await getProfileByUsername(params.username);
   if (!user) return;
 
   return {
     title: `${user.name ?? user.username}`,
-    description: user.bio || `Check out ${user.name}'s profile`,
+    description: user.bio || `Check out ${user.username}'s profile.`,
   };
 }
 
 async function ProfilePageServer({ params }: { params: { username: string } }) {
   const user = await getProfileByUsername(params.username);
+
   if (!user) notFound();
 
-  const [post, likedPosts, isCurrentFollowing] = await Promise.all([
+  const [posts, likedPosts, isCurrentUserFollowing] = await Promise.all([
     getUserPosts(user.id),
     getUserLikedPosts(user.id),
     isFollowing(user.id),
@@ -36,11 +31,10 @@ async function ProfilePageServer({ params }: { params: { username: string } }) {
   return (
     <ProfilePageClient
       user={user}
-      posts={post}
+      posts={posts}
       likedPosts={likedPosts}
-      isCurrentFollowing={isCurrentFollowing}
+      isFollowing={isCurrentUserFollowing}
     />
   );
 }
-
 export default ProfilePageServer;
