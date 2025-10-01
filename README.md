@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Molecul Social App
 
-## Getting Started
+**Molecul Social App** is a modern social networking web application that allows users to create posts (with text and images), interact with comments and likes, and manage their profiles.  
+Built with **Next.js 15 (App Router)**, it integrates authentication, database management, and media storage seamlessly.  
 
-First, run the development server:
+---
 
+## 🚀 Features
+- 🔑 Authentication with [Clerk](https://clerk.com)  
+- 📝 Create posts with text + image upload via Cloudinary  
+- 💬 Comment and like system  
+- 👤 User profiles with avatar and unique username  
+- ⚡ Automatic revalidation with `revalidatePath` (Next.js)  
+- 🎨 Modern UI powered by **Tailwind CSS + ShadCN UI + Lucide Icons**  
+
+---
+
+## 🛠 Tech Stack
+- **Frontend**: Next.js 15 (App Router), TypeScript, Tailwind CSS, ShadCN UI, Framer Motion  
+- **Backend**: Next.js API Routes, Prisma ORM  
+- **Database**: PostgreSQL (via Supabase)  
+- **Auth**: Clerk  
+- **Media Storage**: Cloudinary  
+- **Deployment**: Vercel  
+
+---
+
+## 📦 Installation
+
+### 1. Clone the repository
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/username/molecul-social-app.git
+cd molecul-social-app
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Install dependencies
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 3. Setup environment variables
 
-## Learn More
+Create a .env.local file in the root directory and add the following:
 
-To learn more about Next.js, take a look at the following resources:
+DATABASE_URL="your_postgres_url"
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY="your_clerk_publishable_key"
+CLERK_SECRET_KEY="your_clerk_secret_key"
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+CLOUDINARY_CLOUD_NAME="your_cloud_name"
+CLOUDINARY_API_KEY="your_api_key"
+CLOUDINARY_API_SECRET="your_api_secret"
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 4. Run Prisma migrations
+```bash
+npx prisma migrate dev
+```
 
-## Deploy on Vercel
+5. Start the development server
+```bash
+npm run dev
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+🚧 Development Notes
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Ensure Clerk and Supabase are set up before running the project
+
+- Cloudinary environment variables must be correct for image uploads
+
+- Use npm run build before deploying to Vercel
