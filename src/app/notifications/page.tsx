@@ -14,7 +14,7 @@ import { HeartIcon, MessageCircleIcon, UserPlusIcon } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
-type Notifications = Awaited<ReturnType<typeof getNotifications>>;
+type Notifications = Awaited<ReturnType<typeof getNotifications>> | [];
 type Notification = Notifications[number];
 
 const getNotificationIcon = (type: string) => {

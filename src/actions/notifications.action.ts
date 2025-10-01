@@ -6,7 +6,7 @@ import { getDbUserById } from "./user.actions";
 export async function getNotifications(){
     try{
         const userId = await getDbUserById();
-        if(!userId) return;
+        if(!userId) return [];
 
 
 
