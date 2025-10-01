@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@clerk/nextjs": "^6.13.0",
@@ -32,7 +33,8 @@
     "react-hot-toast": "^2.5.2",
     "tailwind-merge": "^3.1.0",
     "tailwindcss-animate": "^1.0.7",
-    "uploadthing": "^7.7.4"
+    "uploadthing": "^7.7.4",
+    "prisma": "^6.6.0"
   },
   "devDependencies": {
     "@types/node": "^20",
