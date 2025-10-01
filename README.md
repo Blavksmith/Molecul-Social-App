@@ -43,13 +43,10 @@ npm install
 
 Create a .env.local file in the root directory and add the following:
 
-DATABASE_URL="your_postgres_url"
-NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY="your_clerk_publishable_key"
-CLERK_SECRET_KEY="your_clerk_secret_key"
-
-CLOUDINARY_CLOUD_NAME="your_cloud_name"
-CLOUDINARY_API_KEY="your_api_key"
-CLOUDINARY_API_SECRET="your_api_secret"
+#### DATABASE_URL="your_postgres_url"
+#### NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY="your_clerk_publishable_key"
+#### CLERK_SECRET_KEY="your_clerk_secret_key"
+#### UPLOADTHING_TOKEN="your_uploadthingtoken"
 
 ### 4. Run Prisma migrations
 ```bash
