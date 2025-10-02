@@ -18,9 +18,9 @@ Built with **Next.js 15 (App Router)**, it integrates authentication, database m
 ## 🛠 Tech Stack
 - **Frontend**: Next.js 15 (App Router), TypeScript, Tailwind CSS, ShadCN UI, Framer Motion  
 - **Backend**: Next.js API Routes, Prisma ORM  
-- **Database**: PostgreSQL (via Supabase)  
+- **Database**: PostgreSQL (via Neon)  
 - **Auth**: Clerk  
-- **Media Storage**: Cloudinary  
+- **Media Storage**: UploadThing  
 - **Deployment**: Vercel  
 
 ---
